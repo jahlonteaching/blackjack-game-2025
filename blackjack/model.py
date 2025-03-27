@@ -173,6 +173,10 @@ class Blackjack:
         carta = self.baraja.repartir_carta()
         self.jugador.recibir_carta(carta)
 
+    def repartir_carta_a_la_casa(self):
+        carta = self.baraja.repartir_carta()
+        self.cupier.recibir_carta(carta)
+
     def destapar_mano_de_la_casa(self):
         self.cupier.mano.destapar()
 
@@ -183,7 +187,7 @@ class Blackjack:
         if type(valor_mano_casa) is str:
             return False
 
-        return valor_mano_casa <= 16 and valor_mano_casa <= valor_mano_jugador
+        return valor_mano_casa <= 21 and valor_mano_casa <= 16 and valor_mano_casa <= valor_mano_jugador
 
     def jugador_gano(self) -> bool:
         valor_mano_jugador = self.jugador.mano.calcular_valor()
